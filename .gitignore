@@ -1,0 +1,7 @@
+backend/venv/
+frontend/node_modules/
+.DS_Store
+*.h5
+.env
+__pycache__/
+*.pyc

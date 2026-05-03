@@ -152,6 +152,7 @@ source venv/bin/activate          # macOS / Linux
 
 # Install dependencies
 pip install numpy tensorflow fastapi uvicorn google-generativeai pydantic
+pip install fastapi uvicorn google-generativeai pydantic
 ```
 
 > **Note for GPU Users:** To enable GPU acceleration for batch processing, install the GPU-compatible build of TensorFlow:

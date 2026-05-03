@@ -202,10 +202,10 @@ if __name__ == "__main__":
     )
 
     train_gen = MinesweeperGenerator(
-        batch_size=32,
+        batch_size=512,
         size=SIZE,
         hazards=HAZARDS,
-        steps=500
+        steps=100
     )
 
     if os.path.exists(MODEL_PATH):

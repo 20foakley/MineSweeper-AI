@@ -92,9 +92,7 @@ def encode_board(board):
     tensor[0, :, :, 10] = compute_frontier(board)
     return tensor
 
-# ============================================================
-#                INPUT NORMALIZATION (CRITICAL FIX)
-# ============================================================
+
 
 def normalize_grid(grid):
     return [
@@ -102,9 +100,7 @@ def normalize_grid(grid):
         for x in grid
     ]
 
-# ============================================================
-#                      DETECTION ENGINE
-# ============================================================
+
 
 def get_deterministic_moves(visible_board, size):
     safe_moves = set()
@@ -145,9 +141,7 @@ def get_deterministic_moves(visible_board, size):
 
     return list(safe_moves), list(known_hazards)
 
-# ============================================================
-#                  RECURSIVE REVEAL (REAL GAME RULES)
-# ============================================================
+
 
 def reveal(clues, visible, r, c):
     size = clues.shape[0]
@@ -173,9 +167,6 @@ def reveal(clues, visible, r, c):
 
     return revealed
 
-# ============================================================
-#                   FIELD GENERATION
-# ============================================================
 
 def generate_field(size, hazards):
     field = np.zeros((size, size), dtype=int)
@@ -203,9 +194,7 @@ def generate_field(size, hazards):
 
     return field, clues
 
-# ============================================================
-#                   GAME SIMULATION
-# ============================================================
+
 
 def simulate_single_game(size, hazards):
     field, clues = generate_field(size, hazards)
@@ -265,10 +254,6 @@ def simulate_single_game(size, hazards):
         "cleared_percent": 100.0
     }
 
-# ============================================================
-# REST OF API (UNCHANGED LOGICALLY)
-# ============================================================
-
 class BatchRequest(BaseModel):
     size: int
     hazards: int
@@ -282,9 +267,6 @@ class ExplanationRequest(BaseModel):
 @app.get("/")
 def root():
     return {"status": "running"}
-# ============================================================
-#                   API NORMALIZATION FIXES
-# ============================================================
 
 @app.post("/analyze-risk")
 async def analyze_risk(data: dict):

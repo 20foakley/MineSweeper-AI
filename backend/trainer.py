@@ -217,7 +217,7 @@ if __name__ == "__main__":
 
     model.fit(
         train_gen,
-        epochs=10,
+        epochs=100,
         callbacks=[checkpoint]
 
     )
